@@ -10,6 +10,8 @@ import java.util.List;
 public interface ProductService {
 
     public Product getSingleProduct(Long productId) throws ProductNotFoundException;
+
+    public List<String> findByTitleEndingWith(String catName);
     public List<Product> getAllProducts();
     public Product addProduct(
             String title,

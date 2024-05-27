@@ -36,6 +36,17 @@ public class ProductController {
         return convertToProductResponseDto(product);
     }
 
+    @GetMapping("/products/endswith/{name}")
+    public List<String> getProductDetails(@PathVariable("name") String catName)
+            throws ProductNotFoundException {
+        List<String> abc =  productService.findByTitleEndingWith(catName);
+        //List<ProductResponseDto> productResponseDtos = new ArrayList<>();
+        //for (Product product : products) {
+            //productResponseDtos.add(convertToProductResponseDto(product));
+        //}
+        return abc;
+    }
+
     @GetMapping("/products")
     public List<ProductResponseDto> getAllProducts() {
         List<Product> products = productService.getAllProducts();

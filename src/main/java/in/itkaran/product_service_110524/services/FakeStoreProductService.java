@@ -41,6 +41,11 @@ public class FakeStoreProductService implements ProductService {
     }
 
     @Override
+    public List<String> findByTitleEndingWith(String catName) {
+        return null;
+    }
+
+    @Override
     public List<Product> getAllProducts(){
         FakeStoreDto[] fakeStoreDtos = restTemplate.getForObject(
                 "http://fakestoreapi.com/products/",

@@ -17,6 +17,6 @@ public class Category extends BaseModel {
     private String title;
     private String description;
     @OneToMany(mappedBy = "category", fetch = FetchType.EAGER)
-    //@Fetch(value = FetchMode.J)
+    @Fetch(value = FetchMode.SUBSELECT)
     List<Product> products;
 }

@@ -7,6 +7,7 @@ import in.itkaran.product_service_110524.repositories.CategoryRepository;
 import in.itkaran.product_service_110524.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service("selfProductService")
@@ -31,6 +32,21 @@ public class SelfProductService implements ProductService {
             );
         }
         return product;
+    }
+
+    @Override
+    public List<String> findByTitleEndingWith(String catName) {
+        List<Category> categories = categoryRepository.findByTitleEndingWith(catName);
+        List<String> abc = new ArrayList<>();
+        for (Category category : categories) {
+            //System.out.println(category.getTitle());
+            List<Product> products = category.getProducts();
+            for (Product product : products) {
+                //System.out.println(product.getTitle());
+                abc.add(product.getTitle());
+            }
+        }
+        return abc;
     }
 
     @Override
